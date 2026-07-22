@@ -10,6 +10,7 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.orm import relationship
 import uuid
+from sqlalchemy import Boolean
 from datetime import datetime
 
 from database import Base
@@ -120,7 +121,7 @@ class ReconciliationStatus(Base):
         primary_key=True,
     )
 
-    is_reconciled = Column(default=False)
+    is_reconciled = Column(Boolean, default=False, nullable=False)
     discrepancy_reason = Column(String)
     last_checked_at = Column(DateTime)
     updated_at = Column(
